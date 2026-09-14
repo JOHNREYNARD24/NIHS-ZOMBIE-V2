@@ -1,1 +1,1827 @@
+/* =========================================================
+   NIHS ZOMBIE APOCALYPSE
+   STYLE.CSS
+========================================================= */
 
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #080511;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    touch-action: manipulation;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #35124f,
+            #10081b 55%,
+            #050309
+        );
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.introBox {
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.nihsCircle {
+    position: relative;
+
+    width: min(62vw, 300px);
+    height: min(62vw, 300px);
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.12),
+            rgba(0,0,0,.2)
+        );
+
+    border: 4px solid rgba(255,255,255,.35);
+
+    box-shadow:
+        0 0 25px #c35cff,
+        0 0 65px rgba(170,50,255,.7);
+
+    overflow: hidden;
+
+    animation:
+        circleIntro 2.4s ease both;
+}
+
+.introLogo {
+    position: relative;
+    z-index: 5;
+
+    width: min(48vw, 230px);
+    max-height: 230px;
+
+    object-fit: contain;
+
+    animation:
+        introLogoAnimation 2.4s ease both;
+
+    filter:
+        drop-shadow(0 0 12px #fff)
+        drop-shadow(0 0 30px #c35cff);
+}
+
+.schoolName {
+    margin-top: 18px;
+
+    font-size: clamp(19px, 4vw, 38px);
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    animation:
+        schoolFade 1.4s ease .55s both;
+}
+
+@keyframes circleIntro {
+
+    0% {
+        opacity: 0;
+        transform: scale(.35) rotate(-20deg);
+    }
+
+    35% {
+        opacity: 1;
+        transform: scale(1.12) rotate(5deg);
+    }
+
+    65% {
+        transform: scale(.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes introLogoAnimation {
+
+    0% {
+        opacity: 0;
+        transform: scale(.4);
+    }
+
+    45% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes schoolFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   CARTOON BLOOD EFFECT
+========================================================= */
+
+.blood {
+    position: absolute;
+    z-index: 3;
+
+    width: 45px;
+    height: 65px;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #ff4b67 0 20%,
+            #a9002c 55%,
+            #520018 100%
+        );
+
+    border-radius:
+        50% 50% 55% 55% /
+        35% 35% 65% 65%;
+
+    opacity: .85;
+
+    filter:
+        drop-shadow(0 0 7px #ff244f);
+
+    animation:
+        bloodDrop 1.7s ease-in-out infinite;
+}
+
+.blood1 {
+    left: 8%;
+    top: 5%;
+
+    transform:
+        rotate(25deg)
+        scale(.75);
+}
+
+.blood2 {
+    right: 8%;
+    top: 18%;
+
+    transform:
+        rotate(-25deg)
+        scale(.55);
+
+    animation-delay: .3s;
+}
+
+.blood3 {
+    left: 17%;
+    bottom: 8%;
+
+    transform:
+        rotate(-15deg)
+        scale(.48);
+
+    animation-delay: .6s;
+}
+
+.blood4 {
+    right: 15%;
+    bottom: 4%;
+
+    transform:
+        rotate(20deg)
+        scale(.65);
+
+    animation-delay: .9s;
+}
+
+@keyframes bloodDrop {
+
+    0%,
+    100% {
+        translate: 0 0;
+        scale: .8;
+        opacity: .65;
+    }
+
+    50% {
+        translate: 0 8px;
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   INTRO TRANSITION
+========================================================= */
+
+#introCircleTransition {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff3159,
+            #8e123d 45%,
+            #21051d
+        );
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    pointer-events: none;
+
+    z-index: 100;
+}
+
+#introCircleTransition.go {
+    animation:
+        circleTransition 1.15s ease-in-out forwards;
+}
+
+@keyframes circleTransition {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 1;
+    }
+
+    45% {
+        transform:
+            translate(-50%, -50%)
+            scale(18);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(60);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card,
+.purokBox {
+    padding: 30px 42px;
+
+    text-align: center;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45,10,70,.96),
+            rgba(20,55,75,.96)
+        );
+
+    border: 3px solid #dca2ff;
+
+    box-shadow:
+        0 0 25px #9c42d8,
+        0 0 70px rgba(120,40,180,.55);
+}
+
+.card {
+    width: min(92vw, 700px);
+    max-height: 90vh;
+
+    overflow-y: auto;
+}
+
+.card h1 {
+    margin: 0 0 15px;
+
+    font-size:
+        clamp(26px, 6vw, 48px);
+}
+
+.card h2 {
+    color: #dca2ff;
+}
+
+.card p {
+    line-height: 1.5;
+
+    font-size:
+        clamp(15px, 3vw, 20px);
+}
+
+
+/* =========================================================
+   PUROK
+========================================================= */
+
+.purokBox {
+    animation:
+        purokAppear .9s ease both;
+}
+
+.purokSmall {
+    font-size:
+        clamp(14px, 3vw, 22px);
+
+    letter-spacing: 4px;
+
+    font-weight: 900;
+
+    opacity: .8;
+}
+
+.purokTitle {
+    margin-top: 8px;
+
+    font-size:
+        clamp(48px, 12vw, 100px);
+
+    line-height: .9;
+
+    font-weight: 900;
+
+    color: #ffdf72;
+
+    text-shadow:
+        0 0 12px #ff9d42,
+        0 0 30px rgba(255,100,50,.55);
+}
+
+.purokSub {
+    margin-top: 12px;
+
+    font-size:
+        clamp(18px, 4vw, 32px);
+
+    font-weight: 900;
+
+    color: #d9a5ff;
+}
+
+@keyframes purokAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(.65);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.06);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   REMINDERS
+========================================================= */
+
+.reminders {
+    text-align: left;
+
+    padding-left: 25px;
+}
+
+.reminders li {
+    margin: 10px 0;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary,
+.secondary {
+    border: 0;
+
+    border-radius: 15px;
+
+    padding: 13px 22px;
+
+    margin: 6px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    color: white;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+}
+
+.primary {
+    background:
+        linear-gradient(
+            135deg,
+            #9c42d8,
+            #e23cff
+        );
+
+    box-shadow:
+        0 6px 18px #0008,
+        0 0 18px rgba(194,73,255,.35);
+}
+
+.secondary {
+    background:
+        linear-gradient(
+            135deg,
+            #31233e,
+            #21182a
+        );
+
+    border: 1px solid #684579;
+}
+
+.primary:hover,
+.secondary:hover {
+    transform: translateY(-2px);
+}
+
+.primary:active,
+.secondary:active {
+    transform: scale(.95);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.titleCard {
+    animation:
+        titleAppear .8s ease both;
+}
+
+.titleLogo {
+    width: 120px;
+    max-width: 40%;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 0 15px #c35cff);
+}
+
+.titleCard h1 {
+    margin-top: 15px;
+    margin-bottom: 0;
+
+    color: #fff;
+}
+
+.titleCard h2 {
+    margin-top: 4px;
+    margin-bottom: 10px;
+
+    color: #c45cff;
+
+    letter-spacing: 4px;
+}
+
+.startGameButton {
+    margin-top: 25px;
+
+    min-width: 190px;
+
+    font-size: 20px;
+
+    letter-spacing: 3px;
+}
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   SETUP
+========================================================= */
+
+.setupGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    text-align: left;
+}
+
+.setupGrid label {
+    font-weight: 800;
+}
+
+.setupGrid input,
+.setupGrid select {
+    width: 100%;
+
+    padding: 11px;
+
+    margin-top: 5px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid #b77cda;
+
+    background: #160d21;
+
+    color: white;
+
+    outline: none;
+}
+
+.setupGrid input:focus,
+.setupGrid select:focus {
+    border-color: #e1a1ff;
+
+    box-shadow:
+        0 0 10px rgba(202,83,255,.35);
+}
+
+.charGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin: 12px 0;
+}
+
+.char {
+    padding: 10px;
+
+    border:
+        2px solid #593a6d;
+
+    border-radius: 12px;
+
+    background: #160d21;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        border-color .15s ease,
+        box-shadow .15s ease;
+}
+
+.char:hover {
+    transform: translateY(-2px);
+}
+
+.char.selected {
+    border-color: #ffdf72;
+
+    box-shadow:
+        0 0 15px #ffdf72;
+}
+
+.face {
+    font-size: 30px;
+}
+
+.sideButtons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.beginButton {
+    margin-top: 15px;
+
+    min-width: 220px;
+}
+
+
+/* =========================================================
+   GAME
+========================================================= */
+
+#gameScreen {
+    background: #000;
+}
+
+.gameWrap {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    background: #07110a;
+}
+
+.gameWrap canvas {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    touch-action: none;
+}
+
+
+/* =========================================================
+   HUD
+========================================================= */
+
+.hud {
+    position: absolute;
+
+    left: 10px;
+    top: 10px;
+
+    z-index: 20;
+
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    max-width: 75%;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+.hud span {
+    background: rgba(20,13,29,.9);
+
+    border:
+        1px solid #8c5aaa;
+
+    border-radius: 10px;
+
+    padding: 7px 10px;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.4);
+}
+
+
+/* =========================================================
+   ROOM TITLE
+========================================================= */
+
+.roomTitle {
+    position: absolute;
+
+    top: 10px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    padding: 7px 18px;
+
+    border-radius: 12px;
+
+    background: rgba(10,7,15,.78);
+
+    border:
+        1px solid #a764c9;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 8px #d36cff;
+}
+
+
+/* =========================================================
+   GAME BUTTONS
+========================================================= */
+
+.gameBtn {
+    position: absolute;
+
+    z-index: 30;
+
+    top: 10px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    padding: 10px 13px;
+
+    color: white;
+
+    font-weight: 900;
+
+    background:
+        rgba(35,17,48,.92);
+
+    border:
+        1px solid #a65bc5;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.45);
+
+    cursor: pointer;
+}
+
+.gameBtn:active {
+    transform: scale(.92);
+}
+
+.pauseButton {
+    right: 10px;
+
+    font-size: 19px;
+}
+
+.shopButton {
+    right: 62px;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   ⭐ SINGLE LARGE JOYSTICK
+   MOVEMENT DIRECTION = 360°
+========================================================= */
+
+.joystick {
+    position: absolute;
+
+    left: 25px;
+    bottom: 25px;
+
+    z-index: 50;
+
+    width: 155px;
+    height: 155px;
+
+    border-radius: 50%;
+
+    touch-action: none;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        3px solid rgba(255,255,255,.28);
+
+    box-shadow:
+        inset 0 0 25px rgba(255,255,255,.06),
+        0 8px 30px rgba(0,0,0,.45);
+
+    backdrop-filter: blur(4px);
+
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.joystickOuter {
+    position: relative;
+
+    width: 115px;
+    height: 115px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(196,92,255,.22),
+            rgba(80,30,100,.12)
+        );
+
+    border:
+        2px solid rgba(255,255,255,.22);
+
+    box-shadow:
+        inset 0 0 20px rgba(0,0,0,.3);
+}
+
+.joystickStick {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #e9b7ff,
+            #a93ee5 50%,
+            #6821a0
+        );
+
+    border:
+        3px solid rgba(255,255,255,.65);
+
+    box-shadow:
+        0 0 18px rgba(193,76,255,.7),
+        inset 0 5px 10px rgba(255,255,255,.25);
+
+    pointer-events: none;
+
+    transition:
+        box-shadow .1s ease;
+}
+
+.joystickDot {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background: rgba(255,255,255,.75);
+
+    box-shadow:
+        0 0 10px white;
+}
+
+
+/* =========================================================
+   360° ATTACK BUTTON
+========================================================= */
+
+.attackButton {
+    position: absolute;
+
+    right: 28px;
+    bottom: 35px;
+
+    z-index: 50;
+
+    width: 105px;
+    height: 105px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid rgba(255,255,255,.35);
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ff9bff,
+            #9d38d1 50%,
+            #4a166c
+        );
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 0 20px rgba(190,67,255,.55),
+        inset 0 6px 15px rgba(255,255,255,.15);
+
+    touch-action: none;
+
+    cursor: pointer;
+
+    transition:
+        transform .1s ease,
+        box-shadow .1s ease;
+}
+
+.attackButton span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+.attackButton:active {
+    transform: scale(.88);
+
+    box-shadow:
+        0 0 35px rgba(225,95,255,.85);
+}
+
+
+/* =========================================================
+   WEAPON INFO
+========================================================= */
+
+.weaponInfo {
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    z-index: 25;
+
+    min-width: 125px;
+
+    padding: 7px 12px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(12,8,17,.82);
+
+    border:
+        1px solid #82539b;
+
+    pointer-events: none;
+}
+
+#weaponName {
+    font-weight: 900;
+
+    font-size: 13px;
+}
+
+#weaponDamage {
+    margin-top: 2px;
+
+    font-size: 10px;
+
+    opacity: .75;
+}
+
+
+/* =========================================================
+   PAUSE PANEL
+========================================================= */
+
+.pausePanel {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(0,0,0,.68);
+
+    backdrop-filter: blur(5px);
+
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.pauseBox {
+    width: min(88vw, 400px);
+
+    padding: 28px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #261132,
+            #120b19
+        );
+
+    border:
+        2px solid #bd6ee4;
+
+    box-shadow:
+        0 0 35px rgba(171,68,220,.45);
+}
+
+.pauseBox h1 {
+    margin-top: 0;
+
+    font-size: 34px;
+}
+
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+#shopModal {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 120;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(0,0,0,.72);
+
+    backdrop-filter: blur(4px);
+
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.shopBox {
+    width: min(92vw, 550px);
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    padding: 22px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #25102f,
+            #120b18
+        );
+
+    border:
+        2px solid #b85ce9;
+
+    box-shadow:
+        0 0 35px rgba(184,92,233,.45);
+
+    text-align: center;
+}
+
+.shopBox h2 {
+    margin-top: 0;
+
+    font-size: 28px;
+}
+
+.items {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 9px;
+
+    margin: 15px 0;
+}
+
+.item {
+    padding: 13px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2a1935,
+            #191020
+        );
+
+    border:
+        1px solid #684579;
+
+    cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        border-color .15s ease;
+}
+
+.item:hover {
+    transform: translateY(-2px);
+
+    border-color: #c979e8;
+}
+
+.item:active {
+    transform: scale(.96);
+}
+
+.item b {
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.settingsCard {
+    width: min(92vw, 500px);
+}
+
+.settingRow {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 20px 0;
+
+    padding: 15px;
+
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+}
+
+.settingRow label,
+.settingRow > span {
+    font-weight: 900;
+}
+
+.settingRow input[type="range"] {
+    flex: 1;
+
+    accent-color: #c45cff;
+}
+
+#volumeValue {
+    min-width: 45px;
+
+    text-align: right;
+}
+
+.toggleButton {
+    margin-left: auto;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    padding: 9px 15px;
+
+    background: #9c42d8;
+
+    color: white;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   GAME OVER
+   LANDSCAPE VIDEO — NOT FULLSCREEN
+========================================================= */
+
+#gameOverScreen {
+    background:
+        radial-gradient(
+            circle at center,
+            #26102e,
+            #050306 75%
+        );
+
+    z-index: 200;
+}
+
+.gameOverOverlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+}
+
+.gameOverBox {
+    width: min(92vw, 850px);
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    padding: 18px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(34,12,42,.97),
+            rgba(10,7,13,.98)
+        );
+
+    border:
+        2px solid #b04bd2;
+
+    box-shadow:
+        0 0 35px rgba(193,70,240,.35);
+}
+
+.gameOverTitle {
+    margin-bottom: 12px;
+
+    font-size:
+        clamp(30px, 6vw, 52px);
+
+    font-weight: 1000;
+
+    color: #ff6a85;
+
+    text-shadow:
+        0 0 12px rgba(255,60,100,.5);
+}
+
+
+/* =========================================================
+   LANDSCAPE VIDEO CONTAINER
+========================================================= */
+
+.gameOverVideoWrap {
+    position: relative;
+
+    width: 100%;
+
+    /*
+       16:9 = landscape
+    */
+
+    aspect-ratio: 16 / 9;
+
+    max-height: 55vh;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: #000;
+
+    border:
+        2px solid #583366;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.5);
+}
+
+.gameOverVideoWrap video {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    background: #000;
+}
+
+
+/* =========================================================
+   SKIP BUTTON
+========================================================= */
+
+.skipVideoButton {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    z-index: 10;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(255,255,255,.35);
+
+    background:
+        rgba(0,0,0,.78);
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.5);
+
+    transition:
+        transform .12s ease,
+        background .12s ease;
+}
+
+.skipVideoButton:hover {
+    background: rgba(130,40,160,.9);
+}
+
+.skipVideoButton:active {
+    transform: scale(.92);
+}
+
+.gameOverText {
+    margin-top: 12px;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    color: #dca2ff;
+}
+
+.gameOverButtons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   LEVEL VIDEO
+========================================================= */
+
+.videoOverlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 180;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,.7);
+
+    backdrop-filter: blur(5px);
+
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.levelVideoBox {
+    position: relative;
+
+    width: min(82vw, 760px);
+
+    aspect-ratio: 16 / 9;
+
+    background: #000;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    border:
+        2px solid #b85ce9;
+
+    box-shadow:
+        0 0 35px rgba(190,72,240,.5);
+}
+
+.levelVideoBox video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    background: #000;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .card {
+        padding: 20px;
+
+        border-radius: 20px;
+    }
+
+    .setupGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .charGrid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .hud {
+        max-width: 72%;
+
+        font-size: 11px;
+    }
+
+    .hud span {
+        padding: 6px 8px;
+    }
+
+    .roomTitle {
+        top: 9px;
+
+        font-size: 12px;
+
+        padding:
+            6px 11px;
+    }
+
+    /*
+       Joystick bigger on phones
+    */
+
+    .joystick {
+        width: 145px;
+        height: 145px;
+
+        left: 18px;
+        bottom: 18px;
+    }
+
+    .joystickOuter {
+        width: 108px;
+        height: 108px;
+    }
+
+    .joystickStick {
+        width: 60px;
+        height: 60px;
+    }
+
+    .attackButton {
+        width: 92px;
+        height: 92px;
+
+        right: 18px;
+        bottom: 25px;
+
+        font-size: 26px;
+    }
+
+    .weaponInfo {
+        bottom: 15px;
+
+        min-width: 105px;
+    }
+
+    .items {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .gameOverBox {
+        width: 94vw;
+
+        padding: 12px;
+    }
+
+    .gameOverTitle {
+        font-size: 30px;
+    }
+
+    .gameOverVideoWrap {
+        max-height: 50vh;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .joystick {
+        width: 132px;
+        height: 132px;
+
+        left: 12px;
+        bottom: 12px;
+    }
+
+    .joystickOuter {
+        width: 98px;
+        height: 98px;
+    }
+
+    .joystickStick {
+        width: 55px;
+        height: 55px;
+    }
+
+    .attackButton {
+        width: 84px;
+        height: 84px;
+
+        right: 12px;
+        bottom: 18px;
+
+        font-size: 24px;
+    }
+
+    .attackButton span {
+        font-size: 9px;
+    }
+
+    .weaponInfo {
+        display: none;
+    }
+
+    .hud {
+        max-width: 68%;
+    }
+
+    .hud span {
+        font-size: 10px;
+        padding: 5px 6px;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media (orientation: landscape) and (max-height: 600px) {
+
+    .joystick {
+        width: 125px;
+        height: 125px;
+
+        left: 16px;
+        bottom: 14px;
+    }
+
+    .joystickOuter {
+        width: 95px;
+        height: 95px;
+    }
+
+    .joystickStick {
+        width: 54px;
+        height: 54px;
+    }
+
+    .attackButton {
+        width: 82px;
+        height: 82px;
+
+        right: 18px;
+        bottom: 18px;
+
+        font-size: 23px;
+    }
+
+    .weaponInfo {
+        bottom: 8px;
+    }
+
+    .gameOverBox {
+        width: min(88vw, 850px);
+
+        padding: 10px;
+    }
+
+    .gameOverTitle {
+        font-size: 27px;
+
+        margin-bottom: 6px;
+    }
+
+    .gameOverText {
+        margin-top: 5px;
+
+        font-size: 14px;
+    }
+
+    .gameOverButtons {
+        margin-top: 4px;
+    }
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #100a16;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7e429b;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b75cda;
+}
+
+
+/* =========================================================
+   NO TEXT SELECTION / GAME FEEL
+========================================================= */
+
+#gameScreen,
+#gameCanvas,
+.joystick,
+.attackButton,
+.gameBtn {
+    -webkit-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+}
+
+
+/* Prevent browser gestures while playing */
+
+#gameScreen {
+    touch-action: none;
+}
+
+
+/* =========================================================
+   END
+========================================================= */
