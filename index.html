@@ -1,263 +1,200 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="ceb">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          content="width=device-width, initial-scale=1.0,
+                   maximum-scale=1.0, user-scalable=no">
 
-    <meta name="theme-color" content="#080510">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>ZOMBIE² — New Israel High School</title>
 
-    <title>NIHS ZOMBIE APOCALYPSE</title>
-
-    <!-- MAIN CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================================================
-     AUDIO
-========================================================= -->
-
-<audio id="backgroundMusic"
-       src="background-music.mp3"
-       loop
-       preload="auto"></audio>
-
-<audio id="yawaSound"
-       src="yawa.mp3"
-       preload="auto"></audio>
-
-
-<!-- =========================================================
-     GAME ROOT
-========================================================= -->
-
-<div id="gameRoot">
-
-
     <!-- =====================================================
-         INTRO / CINEMATIC
+         GAME ROOT
     ====================================================== -->
+    <div id="game">
 
-    <section id="introScreen" class="screen active">
+        <!-- =================================================
+             INTRO / OPENING
+        ================================================== -->
+        <section id="intro-screen" class="screen active">
 
-        <!-- Intro 1 -->
-        <div id="introLogoScene" class="intro-scene">
-            <img
-                id="introLogo"
-                class="nihs-logo"
-                src="nihs-logo.png"
-                alt="NIHS Logo">
-        </div>
+            <div id="intro-logo" class="intro-item">
+                <div class="nihs-circle">
+                    <span>NIHS</span>
+                </div>
 
+                <div class="logo-blood"></div>
 
-        <!-- Intro 2 -->
-        <div id="introTitleScene" class="intro-scene hidden">
-            <div class="intro-title">
+                <h2>NIHS ZOMBIE APOCALYPSE</h2>
+            </div>
+
+            <div id="intro-title" class="intro-item hidden">
                 <h1>NEW ISRAEL HIGH SCHOOL</h1>
                 <h2>ZOMBIE APOCALYPSE</h2>
             </div>
-        </div>
 
-
-        <!-- Intro 3 -->
-        <div id="introDeveloperScene" class="intro-scene hidden">
-            <div class="developer-text">
-                <p>ANG KANI NGA DULA KAY GIBUHAT NI</p>
+            <div id="intro-developer" class="intro-item hidden">
+                <p>
+                    ANG KANI NGA DULA KAY GIBUHAT NI
+                </p>
 
                 <h2>JOHN REYNARD MIRAS</h2>
 
-                <p>SIYA ANG DEVELOPER ANI</p>
+                <p>
+                    SIYA ANG DEVELOPER ANI
+                </p>
             </div>
-        </div>
 
-
-        <!-- Intro 4 -->
-        <div id="introDisclaimerScene" class="intro-scene hidden">
-            <div class="disclaimer-text">
+            <div id="intro-warning" class="intro-item hidden">
                 <p>
                     TIMANI KINI NGA DULA KAY PANG LINGAW² RA
                 </p>
 
-                <p>
-                    AYAW SERYOSOHA ARON DI KA MAMATAY
-                </p>
+                <strong>
+                    AYAW SERYOSOHA ARON DI KA MAMATAY 😂
+                </strong>
             </div>
-        </div>
+
+            <div id="intro-final" class="intro-item hidden">
+
+                <div class="nihs-circle final-logo">
+                    <span>NIHS</span>
+                </div>
+
+                <h2>NIHS ZOMBIE APOCALYPSE</h2>
+
+            </div>
+
+            <button id="intro-start-btn" class="main-button hidden">
+                SUGOD 🎮
+            </button>
+
+        </section>
 
 
-        <!-- Intro 5 / Transition -->
-        <div id="introFinalScene" class="intro-scene hidden">
+        <!-- =================================================
+             HOME MENU
+        ================================================== -->
+        <section id="home-screen" class="screen hidden">
 
-            <div class="final-logo-container">
+            <div class="menu-background"></div>
 
-                <div class="blood-effect blood-one"></div>
-                <div class="blood-effect blood-two"></div>
-                <div class="blood-effect blood-three"></div>
+            <div class="home-content">
 
-                <img
-                    src="nihs-logo.png"
-                    class="final-nihs-logo"
-                    alt="NIHS">
+                <div class="small-logo">
+                    <div class="nihs-circle">
+                        <span>NIHS</span>
+                    </div>
+                </div>
 
                 <h1>NIHS ZOMBIE APOCALYPSE</h1>
 
-            </div>
+                <p class="bisaya-subtitle">
+                    "Pang lingaw² ra ni oy. Ayaw kahadlok. 😂"
+                </p>
 
-        </div>
+                <div class="menu-buttons">
 
+                    <button class="menu-button" id="play-btn">
+                        🎮 PLAY
+                    </button>
 
-        <!-- Start -->
-        <button id="introStartButton"
-                class="main-button intro-start-button hidden">
-            SUGDI
-        </button>
+                    <button class="menu-button" id="settings-btn">
+                        ⚙️ SETTINGS
+                    </button>
 
-    </section>
+                    <button class="menu-button" id="shop-btn">
+                        🛒 SHOP
+                    </button>
 
-
-
-    <!-- =====================================================
-         HOME MENU
-    ====================================================== -->
-
-    <section id="homeScreen" class="screen hidden">
-
-        <div class="menu-background"></div>
-
-        <div class="home-container">
-
-            <div class="home-logo">
-                <img
-                    src="nihs-logo.png"
-                    alt="NIHS">
-            </div>
-
-            <h1 class="game-title">
-                NIHS ZOMBIE APOCALYPSE
-            </h1>
-
-            <p class="school-title">
-                NEW ISRAEL HIGH SCHOOL
-            </p>
-
-
-            <div class="home-buttons">
-
-                <button id="playButton"
-                        class="main-button">
-                    🧟 DUWA
-                </button>
-
-                <button id="settingsButton"
-                        class="main-button">
-                    ⚙️ MGA SETTING
-                </button>
-
-                <button id="shopButton"
-                        class="main-button">
-                    🛒 TINDAHAN
-                </button>
-
-            </div>
-
-
-            <div class="home-stats">
-
-                <div class="stat-box">
-                    <span>COINS</span>
-                    <strong id="homeCoins">0</strong>
-                </div>
-
-                <div class="stat-box">
-                    <span>BEST SCORE</span>
-                    <strong id="homeBestScore">0</strong>
                 </div>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
+        <!-- =================================================
+             PLAY — ROLE SELECT
+        ================================================== -->
+        <section id="role-screen" class="screen hidden">
 
-    <!-- =====================================================
-         PLAY SETUP
-    ====================================================== -->
+            <div class="selection-box">
 
-    <section id="playSetupScreen" class="screen hidden">
+                <button class="back-button" data-back="home-screen">
+                    ← BALIK
+                </button>
 
-        <div class="setup-container">
+                <h1>UNSA MAN KA?</h1>
 
-            <button class="back-button"
-                    data-back="homeScreen">
-                ← BALIK
-            </button>
-
-            <h1>DUWA</h1>
-
-            <!-- ROLE -->
-            <div id="roleStep" class="setup-step active">
-
-                <h2>UNSA IMONG PILION?</h2>
+                <p>Pili kung kinsa imong gamiton.</p>
 
                 <div class="choice-grid">
 
-                    <button class="choice-button"
-                            data-role="student">
-                        🧑
-                        <span>ESTYUDYANTE</span>
+                    <button class="choice-card" data-role="student">
+                        <span class="choice-icon">🧑‍🎓</span>
+                        <strong>ESTUDYANTE</strong>
+                        <small>Laban sa mga zombie!</small>
                     </button>
 
-                    <button class="choice-button"
-                            data-role="teacher">
-                        👨‍🏫
-                        <span>MAGTUTUDLO</span>
+                    <button class="choice-card" data-role="teacher">
+                        <span class="choice-icon">👨‍🏫</span>
+                        <strong>TEACHER</strong>
+                        <small>Maestra/Maestro mode!</small>
                     </button>
 
                 </div>
 
             </div>
 
+        </section>
 
-            <!-- GRADE -->
-            <div id="gradeStep" class="setup-step hidden">
 
-                <h2>PILIA ANG GRADE</h2>
+        <!-- =================================================
+             GRADE SELECT
+        ================================================== -->
+        <section id="grade-screen" class="screen hidden">
 
-                <div class="grade-grid">
+            <div class="selection-box">
 
-                    <button class="grade-button"
-                            data-grade="7">
+                <button class="back-button" id="grade-back">
+                    ← BALIK
+                </button>
+
+                <h1>PILI UG GRADE</h1>
+
+                <p id="grade-description">
+                    Asa ka nga grade?
+                </p>
+
+                <div id="grade-grid" class="grade-grid">
+
+                    <button class="grade-button" data-grade="7">
                         GRADE 7
                     </button>
 
-                    <button class="grade-button"
-                            data-grade="8">
+                    <button class="grade-button" data-grade="8">
                         GRADE 8
                     </button>
 
-                    <button class="grade-button"
-                            data-grade="9">
+                    <button class="grade-button" data-grade="9">
                         GRADE 9
                     </button>
 
-                    <button class="grade-button"
-                            data-grade="10">
+                    <button class="grade-button" data-grade="10">
                         GRADE 10
                     </button>
 
-                    <button class="grade-button"
-                            data-grade="11">
+                    <button class="grade-button" data-grade="11">
                         GRADE 11
                     </button>
 
-                    <button class="grade-button"
-                            data-grade="12">
+                    <button class="grade-button" data-grade="12">
                         GRADE 12
                     </button>
 
@@ -265,238 +202,245 @@
 
             </div>
 
+        </section>
 
-            <!-- GENDER -->
-            <div id="genderStep" class="setup-step hidden">
 
-                <h2>LALAKI BA O BABAYE?</h2>
+        <!-- =================================================
+             GENDER SELECT
+        ================================================== -->
+        <section id="gender-screen" class="screen hidden">
+
+            <div class="selection-box">
+
+                <button class="back-button" id="gender-back">
+                    ← BALIK
+                </button>
+
+                <h1>LALAKI O BABAE?</h1>
+
+                <p>Pili-a imong character type.</p>
 
                 <div class="choice-grid">
 
-                    <button class="choice-button"
-                            data-gender="male">
-                        👦
-                        <span>LALAKI</span>
+                    <button class="choice-card" data-gender="male">
+
+                        <span class="choice-icon">👦</span>
+
+                        <strong>LALAKI</strong>
+
                     </button>
 
-                    <button class="choice-button"
-                            data-gender="female">
-                        👧
-                        <span>BABAYE</span>
+                    <button class="choice-card" data-gender="female">
+
+                        <span class="choice-icon">👧</span>
+
+                        <strong>BABAE</strong>
+
                     </button>
 
                 </div>
 
             </div>
 
-
-            <!-- CHARACTER -->
-            <div id="characterStep" class="setup-step hidden">
-
-                <h2>PILIA ANG IMONG CHARACTER</h2>
-
-                <div class="character-selection">
-
-                    <!-- Character Preview -->
-                    <div class="character-preview-panel">
-
-                        <div id="characterPreview"
-                             class="character-preview">
-
-                            <div class="character-shadow"></div>
-
-                            <div class="character-body">
-
-                                <div class="character-hair"></div>
-
-                                <div class="character-head">
-
-                                    <div class="eye left-eye"></div>
-                                    <div class="eye right-eye"></div>
-
-                                    <div class="character-mouth"></div>
-
-                                </div>
-
-                                <div class="character-neck"></div>
-
-                                <div class="character-shirt"></div>
-
-                                <div class="character-arms">
-
-                                    <div class="character-arm left-arm"></div>
-                                    <div class="character-arm right-arm"></div>
-
-                                </div>
-
-                                <div class="character-pants"></div>
-
-                                <div class="character-legs">
-
-                                    <div class="character-leg left-leg"></div>
-                                    <div class="character-leg right-leg"></div>
-
-                                </div>
-
-                                <div class="character-shoes">
-
-                                    <div class="shoe left-shoe"></div>
-                                    <div class="shoe right-shoe"></div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
+        </section>
 
 
-                        <div class="selected-character-info">
+        <!-- =================================================
+             CHARACTER SELECT
+        ================================================== -->
+        <section id="character-screen" class="screen hidden">
 
-                            <h3 id="selectedCharacterName">
-                                PILIA USA
-                            </h3>
+            <div class="character-select-layout">
 
-                            <p id="selectedCharacterDetails">
-                                Wala pay napili.
-                            </p>
+                <button class="back-button" id="character-back">
+                    ← BALIK
+                </button>
 
-                        </div>
+                <div class="character-heading">
+
+                    <h1>PILI UG CHARACTER</h1>
+
+                    <p id="character-category">
+                        Mga character
+                    </p>
+
+                </div>
+
+                <!-- Character preview -->
+                <div class="character-preview">
+
+                    <div id="character-preview-body"
+                         class="character-body preview-character">
+
+                        <div class="character-head"></div>
+                        <div class="character-hair"></div>
+                        <div class="character-body-part"></div>
+                        <div class="character-legs"></div>
 
                     </div>
 
+                    <h2 id="preview-name">
+                        Wala pa napili
+                    </h2>
 
-                    <!-- Character List -->
-                    <div class="character-list-panel">
+                    <p id="preview-info">
+                        Pili ug character sa ubos.
+                    </p>
 
-                        <div id="characterList"
-                             class="character-list">
-                        </div>
+                    <button id="character-confirm"
+                            class="main-button"
+                            disabled>
+                        PILIA NI 🎮
+                    </button>
+
+                </div>
+
+                <!-- Character cards generated by JS -->
+                <div id="character-grid"
+                     class="character-grid">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             HUMAN OR ZOMBIE
+        ================================================== -->
+        <section id="type-screen" class="screen hidden">
+
+            <div class="selection-box">
+
+                <h1>TAO O ZOMBIE?</h1>
+
+                <p>
+                    Pili-a imong side.
+                </p>
+
+                <div class="choice-grid">
+
+                    <button class="choice-card" data-playtype="human">
+
+                        <span class="choice-icon">👤</span>
+
+                        <strong>TAO</strong>
+
+                        <small>
+                            Laban sa mga zombie gamit ang weapons.
+                        </small>
+
+                    </button>
+
+                    <button class="choice-card" data-playtype="zombie">
+
+                        <span class="choice-icon">🧟</span>
+
+                        <strong>ZOMBIE</strong>
+
+                        <small>
+                            Wala kay weapon. Kagat mode! 😂
+                        </small>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LOADOUT / FINAL START
+        ================================================== -->
+        <section id="loadout-screen" class="screen hidden">
+
+            <div class="selection-box">
+
+                <h1>READY NA?</h1>
+
+                <div id="selected-character-card"
+                     class="selected-character-card">
+
+                    <div id="selected-character-preview"
+                         class="character-body">
+
+                        <div class="character-head"></div>
+                        <div class="character-hair"></div>
+                        <div class="character-body-part"></div>
+                        <div class="character-legs"></div>
+
+                    </div>
+
+                    <div>
+
+                        <h2 id="selected-character-name">
+                            Character
+                        </h2>
+
+                        <p id="selected-character-details">
+                            Details
+                        </p>
 
                     </div>
 
                 </div>
 
+                <div id="loadout-info">
 
-                <button id="characterContinueButton"
+                    <div class="stat-box">
+                        <span>❤️ HEALTH</span>
+                        <strong id="starting-health">100</strong>
+                    </div>
+
+                    <div class="stat-box">
+                        <span>⚔️ MODE</span>
+                        <strong id="starting-mode">TAO</strong>
+                    </div>
+
+                    <div class="stat-box">
+                        <span>🏫 ROOM</span>
+                        <strong>1 / 6</strong>
+                    </div>
+
+                </div>
+
+                <button id="game-start-btn"
                         class="main-button">
-                    PADAYON
+                    SUGOD SA DULA 🎮
                 </button>
 
             </div>
 
-
-            <!-- HUMAN / ZOMBIE -->
-            <div id="modeStep" class="setup-step hidden">
-
-                <h2>TAO BA O ZOMBIE?</h2>
-
-                <div class="choice-grid">
-
-                    <button class="choice-button mode-choice"
-                            data-mode="human">
-
-                        🧑
-
-                        <span>TAO</span>
-
-                        <small>
-                            MAKIGLALABAN SA MGA ZOMBIE
-                        </small>
-
-                    </button>
+        </section>
 
 
-                    <button class="choice-button mode-choice"
-                            data-mode="zombie">
+        <!-- =================================================
+             GAME SCREEN
+        ================================================== -->
+        <section id="game-screen" class="screen hidden">
 
-                        🧟
+            <canvas id="game-canvas"></canvas>
 
-                        <span>ZOMBIE</span>
+            <!-- Top HUD -->
+            <div id="game-hud">
 
-                        <small>
-                            KAGAT RA ANG GAMIT
-                        </small>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- FINAL START -->
-            <div id="finalPlayStep"
-                 class="setup-step hidden">
-
-                <div class="final-selection">
-
-                    <h2>ANDAM NA KA?</h2>
-
-                    <div id="finalCharacterMini"
-                         class="final-character-mini">
-                    </div>
-
-                    <h3 id="finalCharacterName">
-                        -
-                    </h3>
-
-                    <p id="finalSelectionInfo">
-                        -
-                    </p>
-
-                    <button id="gameStartButton"
-                            class="main-button big-start-button">
-                        SUGDI ANG DUWA
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         GAME SCREEN
-    ====================================================== -->
-
-    <section id="gameScreen" class="screen hidden">
-
-        <div id="gameContainer">
-
-            <!-- Canvas -->
-            <canvas id="gameCanvas"></canvas>
-
-
-            <!-- =================================================
-                 GAME HUD
-            ================================================== -->
-
-            <div id="gameHUD">
-
-                <!-- Top Left -->
                 <div class="hud-left">
 
-                    <div class="hud-player">
+                    <div class="hud-item health-hud">
 
-                        <span id="hudCharacterName">
-                            PLAYER
-                        </span>
+                        <span>❤️</span>
 
                         <div class="health-container">
 
-                            <div class="health-bar-background">
+                            <div class="health-bar">
 
-                                <div id="playerHealthBar"
-                                     class="health-bar">
-                                </div>
+                                <div id="health-fill"></div>
 
                             </div>
 
-                            <span id="playerHealthText">
+                            <span id="health-text">
                                 100 / 100
                             </span>
 
@@ -506,316 +450,95 @@
 
                 </div>
 
-
-                <!-- Top Center -->
                 <div class="hud-center">
 
-                    <div class="room-indicator">
+                    <div id="room-label">
+                        ROOM 1
+                    </div>
 
-                        <span>
-                            ROOM
-                        </span>
-
-                        <strong id="roomNumber">
-                            1
-                        </strong>
-
-                        <span>
-                            / 6
-                        </span>
-
+                    <div id="level-label">
+                        LEVEL 1
                     </div>
 
                 </div>
 
-
-                <!-- Top Right -->
                 <div class="hud-right">
 
-                    <div class="score-display">
-                        SCORE:
-                        <strong id="scoreDisplay">
-                            0
-                        </strong>
+                    <div class="hud-item">
+                        🪙 <span id="coin-count">0</span>
                     </div>
 
-                    <div class="coin-display">
-                        🪙
-                        <strong id="gameCoins">
-                            0
-                        </strong>
+                    <div class="hud-item">
+                        ☠️ <span id="zombie-count">0</span>
                     </div>
 
-                    <button id="pauseButton"
-                            class="hud-button">
-                        ⏸
+                    <button id="pause-btn">
+                        ⏸️
                     </button>
 
                 </div>
 
+            </div>
 
-                <!-- Weapon HUD -->
-                <div id="weaponHUD"
-                     class="weapon-hud">
 
-                    <div class="current-weapon-icon"
-                         id="currentWeaponIcon">
-                        🖍️
-                    </div>
+            <!-- Weapon HUD -->
+            <div id="weapon-hud">
 
-                    <div class="current-weapon-info">
+                <div id="current-weapon">
+                    <span class="weapon-icon">🖍️</span>
 
-                        <strong id="currentWeaponName">
+                    <div>
+                        <strong id="weapon-name">
                             CHALK
                         </strong>
 
-                        <span>
-                            DAMAGE:
-                            <b id="currentWeaponDamage">
-                                5
-                            </b>
-                        </span>
-
+                        <small id="weapon-damage">
+                            DAMAGE 5
+                        </small>
                     </div>
-
-                    <button id="weaponSwitchButton"
-                            class="weapon-switch-button">
-                        PALIT
-                    </button>
-
                 </div>
 
-
-                <!-- Zombie Mode HUD -->
-                <div id="zombieHUD"
-                     class="zombie-hud hidden">
-
-                    <div class="zombie-mode-label">
-                        🧟 ZOMBIE MODE
-                    </div>
-
-                    <div class="zombie-target">
-                        TARGET:
-                        <strong id="zombieTargetCount">
-                            0
-                        </strong>
-                    </div>
-
-                </div>
-
-
-                <!-- Combo -->
-                <div id="comboDisplay"
-                     class="combo-display hidden">
-
-                    <strong id="comboNumber">
-                        0
-                    </strong>
-
-                    <span>
-                        COMBO
-                    </span>
-
-                </div>
-
-
-                <!-- Boss Warning -->
-                <div id="bossWarning"
-                     class="boss-warning hidden">
-
-                    <div>
-                        ⚠️
-                    </div>
-
-                    <strong>
-                        BOSS MIABOT!
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 MOBILE CONTROLS
-            ================================================== -->
-
-            <div id="mobileControls">
-
-                <!-- Movement -->
-                <div id="movementJoystick"
-                     class="joystick-area">
-
-                    <div class="joystick-base">
-
-                        <div id="movementStick"
-                             class="joystick-stick">
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Attack -->
-                <div id="attackJoystick"
-                     class="joystick-area attack-area">
-
-                    <div class="joystick-base attack-base">
-
-                        <div id="attackStick"
-                             class="joystick-stick attack-stick">
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Interaction -->
-                <button id="interactionButton"
-                        class="game-control-button interaction-button">
-                    ✋
+                <button id="attack-btn">
+                    ⚔️
+                    <span>ATTACK</span>
                 </button>
 
-
-                <!-- Weapon -->
-                <button id="mobileWeaponButton"
-                        class="game-control-button weapon-control-button">
-                    🖍️
-                </button>
-
-
-                <!-- Pause -->
-                <button id="mobilePauseButton"
-                        class="game-control-button pause-control-button">
-                    ⏸
+                <button id="throw-btn">
+                    🎯
+                    <span>THROW</span>
                 </button>
 
             </div>
 
 
-            <!-- Level Message -->
-            <div id="levelMessage"
-                 class="level-message hidden">
+            <!-- Mobile Controller -->
+            <div id="mobile-controls">
 
-                <h2 id="levelMessageTitle">
-                    ROOM 1
-                </h2>
+                <div id="joystick">
 
-                <p id="levelMessageText">
-                    ANDAM NA KA?
-                </p>
+                    <button class="control-up"
+                            data-direction="up">
+                        ▲
+                    </button>
 
-            </div>
+                    <button class="control-left"
+                            data-direction="left">
+                        ◀
+                    </button>
 
+                    <button class="control-center"
+                            disabled>
+                        ●
+                    </button>
 
-            <!-- Damage Flash -->
-            <div id="damageFlash"
-                 class="damage-flash">
-            </div>
+                    <button class="control-right"
+                            data-direction="right">
+                        ▶
+                    </button>
 
-
-            <!-- Hit Effect -->
-            <div id="hitEffectContainer"
-                 class="hit-effect-container">
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         PAUSE MENU
-    ====================================================== -->
-
-    <section id="pauseScreen"
-             class="overlay-screen hidden">
-
-        <div class="pause-panel">
-
-            <h1>PAUSED</h1>
-
-            <p>
-                PAHULAY SA USA.
-            </p>
-
-            <button id="resumeButton"
-                    class="main-button">
-                ▶️ PADAYON
-            </button>
-
-            <button id="pauseSettingsButton"
-                    class="main-button">
-                ⚙️ MGA SETTING
-            </button>
-
-            <button id="exitGameButton"
-                    class="main-button danger-button">
-                🚪 GAWAS
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SETTINGS
-    ====================================================== -->
-
-    <section id="settingsScreen"
-             class="screen hidden">
-
-        <div class="settings-container">
-
-            <button class="back-button"
-                    data-back="homeScreen">
-                ← BALIK
-            </button>
-
-            <h1>⚙️ MGA SETTING</h1>
-
-
-            <!-- Master Volume -->
-            <div class="setting-card">
-
-                <div class="setting-header">
-
-                    <span>
-                        🔊 VOLUME
-                    </span>
-
-                    <strong id="volumeValue">
-                        100%
-                    </strong>
-
-                </div>
-
-                <input id="volumeSlider"
-                       type="range"
-                       min="0"
-                       max="100"
-                       value="100">
-
-            </div>
-
-
-            <!-- Music -->
-            <div class="setting-card">
-
-                <div class="setting-header">
-
-                    <span>
-                        🎵 MUSIC
-                    </span>
-
-                    <button id="musicToggle"
-                            class="toggle-button active">
-                        ON
+                    <button class="control-down"
+                            data-direction="down">
+                        ▼
                     </button>
 
                 </div>
@@ -823,446 +546,389 @@
             </div>
 
 
-            <!-- SFX -->
-            <div class="setting-card">
+            <!-- Pause Overlay -->
+            <div id="pause-overlay"
+                 class="game-overlay hidden">
 
-                <div class="setting-header">
+                <div class="overlay-box">
 
-                    <span>
-                        🔊 SOUND EFFECTS
-                    </span>
-
-                    <button id="sfxToggle"
-                            class="toggle-button active">
-                        ON
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- Mute -->
-            <div class="setting-card">
-
-                <div class="setting-header">
-
-                    <span>
-                        🔇 MUTE TANAN
-                    </span>
-
-                    <button id="muteToggle"
-                            class="toggle-button">
-                        OFF
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="settings-note">
-
-                <p>
-                    Ang imong settings awtomatikong ma-save.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SHOP
-    ====================================================== -->
-
-    <section id="shopScreen"
-             class="screen hidden">
-
-        <div class="shop-container">
-
-            <button class="back-button"
-                    data-back="homeScreen">
-                ← BALIK
-            </button>
-
-            <div class="shop-header">
-
-                <div>
-
-                    <h1>🛒 TINDAHAN</h1>
+                    <h1>⏸ DULA GI-PAUSE</h1>
 
                     <p>
-                        PILIA ANG IMONG WEAPON
+                        Pahuway sa kadali. 😎
                     </p>
 
+                    <button id="resume-btn"
+                            class="main-button">
+                        ▶️ PADAYON
+                    </button>
+
+                    <button id="pause-settings-btn"
+                            class="secondary-button">
+                        ⚙️ SETTINGS
+                    </button>
+
+                    <button id="quit-game-btn"
+                            class="secondary-button">
+                        🏠 BALIK SA MENU
+                    </button>
+
                 </div>
 
-                <div class="shop-coins">
-                    🪙
-                    <strong id="shopCoins">
-                        0
-                    </strong>
-                </div>
-
             </div>
 
 
-            <div id="shopWeapons"
-                 class="shop-weapons-grid">
+            <!-- Countdown -->
+            <div id="countdown-overlay"
+                 class="countdown-overlay hidden">
 
-                <!-- Weapons generated by JavaScript -->
+                <span id="countdown-number">
+                    3
+                </span>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
+        <!-- =================================================
+             VIDEO OVERLAY
+        ================================================== -->
+        <section id="video-overlay"
+                 class="screen hidden">
 
-    <!-- =====================================================
-         VIDEO SCREEN
-    ====================================================== -->
+            <div class="video-window">
 
-    <section id="videoScreen"
-             class="overlay-screen hidden">
+                <button id="video-close"
+                        class="video-close">
+                    ✕
+                </button>
 
-        <div class="video-container">
-
-            <div class="video-title"
-                 id="videoTitle">
-                CONGRATULATIONS
-            </div>
-
-            <div class="video-frame">
-
-                <video id="gameVideo"
-                       preload="auto"
-                       playsinline
-                       controls>
-
-                    <source id="gameVideoSource"
-                            src=""
-                            type="video/mp4">
-
-                    Dili suportado sa imong browser ang video.
-
+                <video id="event-video"
+                       controls
+                       playsinline>
                 </video>
 
             </div>
 
-            <p id="videoText">
-                -
-            </p>
+        </section>
 
-            <button id="videoContinueButton"
-                    class="main-button hidden">
-                PADAYON
-            </button>
+
+        <!-- =================================================
+             GAME OVER
+        ================================================== -->
+        <section id="gameover-screen"
+                 class="screen hidden">
+
+            <div class="result-box">
+
+                <div class="result-icon">
+                    🧟
+                </div>
+
+                <h1>GAME OVER!</h1>
+
+                <p id="gameover-message">
+                    Nahurot imong kinabuhi! 😂
+                </p>
+
+                <div class="result-stats">
+
+                    <div>
+                        <span>ROOM</span>
+                        <strong id="gameover-room">
+                            1
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>ZOMBIES</span>
+                        <strong id="gameover-kills">
+                            0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>COINS</span>
+                        <strong id="gameover-coins">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+                <button id="gameover-video-btn"
+                        class="main-button">
+                    TAN-AWA ANG VIDEO 🎬
+                </button>
+
+                <button id="retry-btn"
+                        class="secondary-button">
+                    🔄 SULAY PAG-USAB
+                </button>
+
+                <button id="gameover-menu-btn"
+                        class="secondary-button">
+                    🏠 MENU
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             VICTORY
+        ================================================== -->
+        <section id="victory-screen"
+                 class="screen hidden">
+
+            <div class="result-box">
+
+                <div class="result-icon">
+                    🏆
+                </div>
+
+                <h1>CONGRATULATIONS!</h1>
+
+                <h2>NATAPOS NIMO ANG DULA! 🎉</h2>
+
+                <p>
+                    Buhi pa ka! Maayo! 😂
+                </p>
+
+                <div class="result-stats">
+
+                    <div>
+                        <span>ZOMBIES</span>
+                        <strong id="victory-kills">
+                            0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>COINS</span>
+                        <strong id="victory-coins">
+                            0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>TIME</span>
+                        <strong id="victory-time">
+                            00:00
+                        </strong>
+                    </div>
+
+                </div>
+
+                <button id="victory-video-btn"
+                        class="main-button">
+                    🎬 TAN-AWA ANG VIDEO
+                </button>
+
+                <button id="victory-menu-btn"
+                        class="secondary-button">
+                    🏠 BALIK SA MENU
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SETTINGS
+        ================================================== -->
+        <section id="settings-screen"
+                 class="screen hidden">
+
+            <div class="settings-box">
+
+                <button class="back-button"
+                        id="settings-back">
+                    ← BALIK
+                </button>
+
+                <h1>⚙️ SETTINGS</h1>
+
+                <div class="setting-row">
+
+                    <div>
+                        <strong>🔊 MASTER VOLUME</strong>
+                        <small>
+                            I-adjust ang overall volume.
+                        </small>
+                    </div>
+
+                    <input type="range"
+                           id="master-volume"
+                           min="0"
+                           max="100"
+                           value="80">
+
+                    <span id="master-volume-value">
+                        80%
+                    </span>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+                        <strong>🎵 MUSIC</strong>
+                        <small>
+                            Background music.
+                        </small>
+                    </div>
+
+                    <input type="range"
+                           id="music-volume"
+                           min="0"
+                           max="100"
+                           value="70">
+
+                    <span id="music-volume-value">
+                        70%
+                    </span>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+                        <strong>💥 SOUND EFFECTS</strong>
+                        <small>
+                            Weapons, zombie sounds ug uban pa.
+                        </small>
+                    </div>
+
+                    <input type="range"
+                           id="sfx-volume"
+                           min="0"
+                           max="100"
+                           value="80">
+
+                    <span id="sfx-volume-value">
+                        80%
+                    </span>
+
+                </div>
+
+
+                <div class="setting-row toggle-row">
+
+                    <div>
+                        <strong>🔇 SOUND</strong>
+                        <small>
+                            I-off kung gusto nimo silent mode.
+                        </small>
+                    </div>
+
+                    <button id="sound-toggle"
+                            class="toggle active">
+                        ON
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SHOP
+        ================================================== -->
+        <section id="shop-screen"
+                 class="screen hidden">
+
+            <div class="shop-box">
+
+                <button class="back-button"
+                        id="shop-back">
+                    ← BALIK
+                </button>
+
+                <div class="shop-header">
+
+                    <div>
+
+                        <h1>🛒 SHOP</h1>
+
+                        <p>
+                            Palit ug mas kusgan nga gamit.
+                        </p>
+
+                    </div>
+
+                    <div class="shop-coins">
+                        🪙
+                        <span id="shop-coins">
+                            0
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div id="shop-grid"
+                     class="shop-grid">
+
+                    <!-- Weapons generated by JS -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             NOTIFICATION
+        ================================================== -->
+        <div id="notification"
+             class="notification hidden">
+
+            <span id="notification-icon">
+                ℹ️
+            </span>
+
+            <span id="notification-text">
+                Message
+            </span>
 
         </div>
 
-    </section>
-
-
-
-    <!-- =====================================================
-         ROOM TRANSITION
-    ====================================================== -->
-
-    <section id="roomTransitionScreen"
-             class="overlay-screen hidden">
-
-        <div class="room-transition">
-
-            <div class="transition-logo">
-                <img src="nihs-logo.png"
-                     alt="NIHS">
-            </div>
-
-            <p>
-                ROOM
-            </p>
-
-            <h1 id="transitionRoomNumber">
-                2
-            </h1>
-
-            <h2 id="transitionRoomName">
-                -
-            </h2>
-
-        </div>
-
-    </section>
-
+    </div>
 
 
     <!-- =====================================================
-         GAME OVER
+         AUDIO PLACEHOLDERS
+         Ikaw ang magbutang sa actual files.
     ====================================================== -->
 
-    <section id="gameOverScreen"
-             class="overlay-screen hidden">
+    <audio id="bg-music" loop></audio>
 
-        <div class="result-panel game-over-panel">
-
-            <div class="result-icon">
-                🧟
-            </div>
-
-            <h1>
-                GAME OVER
-            </h1>
-
-            <p>
-                DILI PA KATAPUSAN!
-            </p>
-
-            <div class="result-stats">
-
-                <div>
-                    <span>SCORE</span>
-                    <strong id="gameOverScore">
-                        0
-                    </strong>
-                </div>
-
-                <div>
-                    <span>COINS</span>
-                    <strong id="gameOverCoins">
-                        0
-                    </strong>
-                </div>
-
-                <div>
-                    <span>ROOM</span>
-                    <strong id="gameOverRoom">
-                        1
-                    </strong>
-                </div>
-
-            </div>
-
-            <button id="gameOverMenuButton"
-                    class="main-button">
-                BALIK SA MENU
-            </button>
-
-        </div>
-
-    </section>
-
+    <audio id="sfx-yawa"></audio>
+    <audio id="sfx-attack"></audio>
+    <audio id="sfx-hit"></audio>
+    <audio id="sfx-player-damage"></audio>
+    <audio id="sfx-player-death"></audio>
+    <audio id="sfx-zombie"></audio>
+    <audio id="sfx-weapon-throw"></audio>
+    <audio id="sfx-level-complete"></audio>
+    <audio id="sfx-button"></audio>
 
 
     <!-- =====================================================
-         VICTORY
+         JAVASCRIPT
     ====================================================== -->
-
-    <section id="victoryScreen"
-             class="overlay-screen hidden">
-
-        <div class="result-panel victory-panel">
-
-            <div class="result-icon">
-                🏆
-            </div>
-
-            <h1>
-                NAHUMAN NIMO!
-            </h1>
-
-            <p>
-                NAKALABOT KA HANGTOD SA KATAPUSAN!
-            </p>
-
-            <div class="result-stats">
-
-                <div>
-                    <span>SCORE</span>
-                    <strong id="victoryScore">
-                        0
-                    </strong>
-                </div>
-
-                <div>
-                    <span>COINS</span>
-                    <strong id="victoryCoins">
-                        0
-                    </strong>
-                </div>
-
-                <div>
-                    <span>BEST SCORE</span>
-                    <strong id="victoryBestScore">
-                        0
-                    </strong>
-                </div>
-
-            </div>
-
-            <button id="victoryMenuButton"
-                    class="main-button">
-                BALIK SA MENU
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         CHARACTER DATA
-    ====================================================== -->
-
-    <script>
-        /*
-         * Character data.
-         * Ang actual character appearance, animation,
-         * colors ug stats i-handle sa script.js.
-         */
-
-        window.NIHS_CHARACTERS = {
-
-            students: {
-
-                "7": {
-                    male: [
-                        "Steve",
-                        "Cyber",
-                        "C"
-                    ],
-                    female: [
-                        "J",
-                        "Inday J",
-                        "A"
-                    ]
-                },
-
-                "8": {
-                    male: [
-                        "Nygien",
-                        "Boss H",
-                        "Dodong O"
-                    ],
-                    female: [
-                        "Xyhh",
-                        "Ash",
-                        "Mitch",
-                        "Hyris",
-                        "C",
-                        "D",
-                        "J"
-                    ]
-                },
-
-                "9": {
-                    male: [
-                        "Boss J",
-                        "Boss R",
-                        "Dodong"
-                    ],
-                    female: [
-                        "Inday Y",
-                        "Miss H",
-                        "V"
-                    ]
-                },
-
-                "10": {
-                    male: [
-                        "John Reynard",
-                        "Kenth Clark",
-                        "Carl",
-                        "Archel",
-                        "Rhey",
-                        "Johnson",
-                        "Cristian",
-                        "Rhamces",
-                        "Jester",
-                        "Julius",
-                        "Archgel",
-                        "Rencey",
-                        "Elm",
-                        "SHR",
-                        "Rex"
-                    ],
-                    female: [
-                        "A",
-                        "S",
-                        "M",
-                        "J",
-                        "I",
-                        "D"
-                    ]
-                },
-
-                "11": {
-                    male: [
-                        "A",
-                        "C",
-                        "R"
-                    ],
-                    female: [
-                        "M",
-                        "D",
-                        "J",
-                        "R"
-                    ]
-                },
-
-                "12": {
-                    male: [
-                        "ARV",
-                        "S",
-                        "T",
-                        "D"
-                    ],
-                    female: [
-                        "I",
-                        "P",
-                        "J"
-                    ]
-                }
-
-            },
-
-
-            teachers: {
-
-                male: [
-                    "Sir J"
-                ],
-
-                female: [
-                    "Maam J",
-                    "Maam M",
-                    "Maam JU",
-                    "Maam T",
-                    "Maam N",
-                    "Maam P",
-                    "Maam M",
-                    "Maam MJ"
-                ]
-
-            }
-
-        };
-    </script>
-
-
-    <!-- =====================================================
-         MAIN JAVASCRIPT
-    ====================================================== -->
-
     <script src="script.js"></script>
 
-</div>
-
 </body>
-</html>
+</html>          
+
+            
